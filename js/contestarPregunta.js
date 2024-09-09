@@ -1,4 +1,6 @@
-let numeroAlAzar = Math.ceil(Math.random() * 20);
+let intentos = 0;
+let correctas = 0;
+let numeroAlAzar = Math.ceil(Math.random() * 101);
 console.log(numeroAlAzar);
 let preguntaElegida = preguntasYRespuestas.find(
   (response) => response.id === numeroAlAzar
@@ -10,7 +12,7 @@ opcionDos.innerText = preguntaElegida.opcion2;
 opcionTres.innerText = preguntaElegida.opcion3;
 opcionCuatro.innerText = preguntaElegida.opcion4;
 function cambiarPregunta() {
-  numeroAlAzar = Math.ceil(Math.random() * 20);
+  numeroAlAzar = Math.ceil(Math.random() * 101);
   console.log(numeroAlAzar);
   preguntaElegida = preguntasYRespuestas.find(
     (response) => response.id === numeroAlAzar
@@ -29,9 +31,11 @@ function contestarPregunta(eleccion) {
         title: "Correcto!",
         icon: "success",
       });
+      correctas++;
     } else {
       Swal.fire({
         title: "Incorrecto!",
+        text: "Respuesta: " + preguntaElegida.respuestaCorrecta,
         icon: "error",
       });
     }
@@ -42,9 +46,11 @@ function contestarPregunta(eleccion) {
         title: "Correcto!",
         icon: "success",
       });
+      correctas++;
     } else {
       Swal.fire({
         title: "Incorrecto!",
+        text: "Respuesta: " + preguntaElegida.respuestaCorrecta,
         icon: "error",
       });
     }
@@ -55,9 +61,11 @@ function contestarPregunta(eleccion) {
         title: "Correcto!",
         icon: "success",
       });
+      correctas++;
     } else {
       Swal.fire({
         title: "Incorrecto!",
+        text: "Respuesta: " + preguntaElegida.respuestaCorrecta,
         icon: "error",
       });
     }
@@ -68,24 +76,41 @@ function contestarPregunta(eleccion) {
         title: "Correcto!",
         icon: "success",
       });
+      correctas++;
     } else {
       Swal.fire({
         title: "Incorrecto!",
+        text: "Respuesta: " + preguntaElegida.respuestaCorrecta,
         icon: "error",
       });
     }
     cambiarPregunta();
   }
 }
+function finDelJuego() {
+  setTimeout(() => {
+    intentos++;
+    if (intentos == 20) {
+      Swal.fire({
+        title: "Se acabo!",
+        text: "Puntaje final: " + correctas + "/" + intentos,
+      });
+    }
+  }, 1500);
+}
 opcionUno.onclick = () => {
   contestarPregunta(1);
+  finDelJuego();
 };
 opcionDos.onclick = () => {
   contestarPregunta(2);
+  finDelJuego();
 };
 opcionTres.onclick = () => {
   contestarPregunta(3);
+  finDelJuego();
 };
 opcionCuatro.onclick = () => {
   contestarPregunta(4);
+  finDelJuego();
 };
