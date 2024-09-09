@@ -8,6 +8,7 @@ section {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  flex-wrap: wrap;
   align-items: center;
   height: 100%;
 }
@@ -33,6 +34,22 @@ section #opciones .opcion {
   height: 3rem;
   border-radius: 10px;
   font-size: 20px;
+}
+
+@media (min-width: 435px) and (max-width: 520px) {
+  section #pregunta {
+    width: 25rem;
+  }
+}
+@media (min-width: 360px) and (max-width: 435px) {
+  section #pregunta {
+    width: 20rem;
+  }
+}
+@media (min-width: 300px) and (max-width: 360px) {
+  section #pregunta {
+    width: 17rem;
+  }
 }
 
 /*# sourceMappingURL=main.css.map */
