@@ -34,6 +34,18 @@ section {
     }
   }
 }
+section {
+  #resultadoFinal {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: solid gray 5px;
+    border-radius: 10px;
+    width: 20rem;
+    height: 15rem;
+  }
+}
 
 @media (min-width: 435px) and (max-width: 520px) {
   section {
@@ -48,11 +60,23 @@ section {
       width: 20rem;
     }
   }
+  section {
+    #resultadoFinal {
+      width: 15rem;
+      height: 15rem;
+    }
+  }
 }
 @media (min-width: 300px) and (max-width: 360px) {
   section {
     #pregunta {
       width: 17rem;
+    }
+  }
+  section {
+    #resultadoFinal {
+      width: 15rem;
+      height: 15rem;
     }
   }
 }

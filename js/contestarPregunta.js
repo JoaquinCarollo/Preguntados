@@ -1,6 +1,6 @@
-let intentos = 0;
+let intentos = 1;
 let correctas = 0;
-let numeroAlAzar = Math.ceil(Math.random() * 101);
+let numeroAlAzar = Math.round(Math.random() * 101);
 console.log(numeroAlAzar);
 let preguntaElegida = preguntasYRespuestas.find(
   (response) => response.id === numeroAlAzar
@@ -12,7 +12,7 @@ opcionDos.innerText = preguntaElegida.opcion2;
 opcionTres.innerText = preguntaElegida.opcion3;
 opcionCuatro.innerText = preguntaElegida.opcion4;
 function cambiarPregunta() {
-  numeroAlAzar = Math.ceil(Math.random() * 101);
+  numeroAlAzar = Math.round(Math.random() * 101);
   console.log(numeroAlAzar);
   preguntaElegida = preguntasYRespuestas.find(
     (response) => response.id === numeroAlAzar
@@ -90,27 +90,33 @@ function contestarPregunta(eleccion) {
 function finDelJuego() {
   setTimeout(() => {
     intentos++;
-    if (intentos == 20) {
-      Swal.fire({
-        title: "Se acabo!",
-        text: "Puntaje final: " + correctas + "/" + intentos,
-      });
+    if (intentos == 11) {
+      document.body.innerHTML = `    <section>
+        <div id="resultadoFinal">
+          <h1>Se acabo el juego</h1>
+          <h2>Puntaje: ${correctas}/10</h2>
+        </div>
+      </section>`;
     }
-  }, 1500);
+  }, 1000);
 }
 opcionUno.onclick = () => {
   contestarPregunta(1);
+  numeroDeIntentos.innerText = intentos + "/10";
   finDelJuego();
 };
 opcionDos.onclick = () => {
   contestarPregunta(2);
+  numeroDeIntentos.innerText = intentos + "/10";
   finDelJuego();
 };
 opcionTres.onclick = () => {
   contestarPregunta(3);
+  numeroDeIntentos.innerText = intentos + "/10";
   finDelJuego();
 };
 opcionCuatro.onclick = () => {
   contestarPregunta(4);
+  numeroDeIntentos.innerText = intentos + "/10";
   finDelJuego();
 };
